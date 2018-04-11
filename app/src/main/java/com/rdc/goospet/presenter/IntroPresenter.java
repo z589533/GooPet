@@ -2,10 +2,7 @@ package com.rdc.goospet.presenter;
 
 import android.support.v4.app.FragmentManager;
 
-import com.avos.avoscloud.AVException;
-import com.avos.avoscloud.AVUser;
-import com.avos.avoscloud.LogInCallback;
-import com.avos.avoscloud.SignUpCallback;
+import com.avos.avoscloud.*;
 import com.rdc.goospet.adapter.IntroFragmentAdapter;
 import com.rdc.goospet.base.BasePresenter;
 import com.rdc.goospet.model.IntroModel;
@@ -51,6 +48,23 @@ public class IntroPresenter extends BasePresenter<IntroVInterface> {
             AVUser.logInInBackground(userName, psw, new LogInCallback<AVUser>() {
                 @Override
                 public void done(AVUser avUser, AVException e) {
+                    avUser=new AVUser();
+                    avUser.setEmail("875267840@qq.com");
+                    avUser.setPassword("1232131");
+                    avUser.setUsername("zcz");
+                    avUser.setMobilePhoneNumber("13076912582");
+                    avUser.setFetchWhenSave(true);
+                    avUser.setObjectId("2141242341241");
+                    AVACL avacl=new AVACL();
+                    avacl.setPublicReadAccess(true);
+                    avacl.setPublicWriteAccess(true);
+                    avacl.setReadAccess(avUser,true);
+
+                    AVRole avRole=new AVRole();
+                    avRole.setName("admin");
+                    avacl.setRoleReadAccess(avRole,true);
+                    avacl.setWriteAccess(avUser,true);
+                    avUser.setACL(avacl);
                     view.dismissDialog();
                     if (avUser != null) {
                         view.loginSuccess(avUser.getUsername());

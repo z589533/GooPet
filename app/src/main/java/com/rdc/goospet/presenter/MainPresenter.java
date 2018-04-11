@@ -6,6 +6,7 @@ import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.View;
 import android.widget.CompoundButton;
 
+import com.rdc.goospet.R;
 import com.rdc.goospet.adapter.RVMainAdapter;
 import com.rdc.goospet.base.BasePresenter;
 import com.rdc.goospet.entity.PetInfo;
@@ -13,6 +14,7 @@ import com.rdc.goospet.model.MainModel;
 import com.rdc.goospet.model.minterface.MainMInterface;
 import com.rdc.goospet.utils.AppConstants;
 import com.rdc.goospet.utils.ToastUtil;
+import com.rdc.goospet.view.activity.MainActivity;
 import com.rdc.goospet.view.vinterface.MainVInterface;
 
 /**
@@ -38,7 +40,7 @@ public class MainPresenter extends BasePresenter<MainVInterface> {
         adapter.setOnRvItemClickListener(new RVMainAdapter.OnRvItemClickListener() {
             @Override
             public void onItemClick(View view, PetInfo petInfo) {
-                ToastUtil.showToast(context, "PetInfo:" + petInfo.getName() + "\n" + petInfo.getDescription());
+                ToastUtil.showToast(context, "介绍:" + petInfo.getName() + "\n" + petInfo.getDescription());
             }
         });
         adapter.setOnPetSelectedListener(new RVMainAdapter.OnPetSelectedListener() {
@@ -47,6 +49,7 @@ public class MainPresenter extends BasePresenter<MainVInterface> {
             public void onPetSelected(CompoundButton buttonView, int petId) {
                 boolean isCheck = buttonView.isChecked();
                 if (isCheck) {
+//                    ToastUtil.showToast(context,"111111111");
                     view.launchDesktopPet();
                 }
                 switch (petId) {
@@ -65,6 +68,8 @@ public class MainPresenter extends BasePresenter<MainVInterface> {
         });
         return adapter;
     }
+
+
 
 
     public ItemTouchHelper getItemTouchHelper(final RVMainAdapter adapter) {

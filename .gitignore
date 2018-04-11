@@ -6,3 +6,12 @@
 .DS_Store
 /build
 /captures
+
+.idea/libraries/*
+.idea/*
+*.ipr
+*.iml
+*/*.iml
+*.iws
+*/idea/libraries/*
+*/idea/

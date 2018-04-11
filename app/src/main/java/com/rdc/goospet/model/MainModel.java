@@ -14,10 +14,10 @@ public class MainModel implements MainMInterface {
     @Override
     public ArrayList<PetInfo> getPetData() {
         ArrayList<PetInfo> data = new ArrayList<>();
-        data.add(new PetInfo(AppConstants.PET_OWL, "Bean", "A sleepless owl", R.drawable.pic_owl_main, false));
-        data.add(new PetInfo(AppConstants.PET_PIG, "Karo", "A lovely pig", R.drawable.pic_pig_main, false));
-        data.add(new PetInfo(AppConstants.PET_COW, "Abbi", "A docile cow", R.drawable.pic_cow_main, false));
-        data.add(new PetInfo(AppConstants.PET_BIRD, "Pear", "A cute bird", R.drawable.pic_bird_main, false));
+        data.add(new PetInfo(AppConstants.PET_OWL, "小古", "好奇的家伙", R.drawable.pic_owl_main, true));
+        data.add(new PetInfo(AppConstants.PET_PIG, "皮皮", "古灵精怪的小猪", R.drawable.pic_pig_main, false));
+        data.add(new PetInfo(AppConstants.PET_COW, "安安", "不安分，捣蛋鬼", R.drawable.pic_cow_main, false));
+        data.add(new PetInfo(AppConstants.PET_BIRD, "大鹏", "充满了好奇小鸡", R.drawable.pic_bird_main, false));
         return data;
     }
 }

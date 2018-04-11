@@ -1,6 +1,7 @@
 package com.rdc.goospet.view.activity;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.LinearLayoutManager;
@@ -17,6 +18,7 @@ import com.rdc.goospet.listener.HidingScrollListener;
 import com.rdc.goospet.presenter.MainPresenter;
 import com.rdc.goospet.service.FloatingPetService;
 import com.rdc.goospet.utils.DimenUtils;
+import com.rdc.goospet.utils.ToastUtil;
 import com.rdc.goospet.view.vinterface.MainVInterface;
 
 /**
@@ -41,6 +43,12 @@ public class MainActivity extends BaseActivity<MainVInterface, MainPresenter> im
     @Override
     protected void initAttributes() {
 
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        initView();
     }
 
     @Override
@@ -103,8 +111,9 @@ public class MainActivity extends BaseActivity<MainVInterface, MainPresenter> im
             case R.id.rv_main:
                 break;
             case R.id.fab_setting:
-                Intent intent = new Intent(MainActivity.this, SettingActivity.class);
-                startActivityWithAnim(intent);
+                launchDesktopPet();
+//                Intent intent = new Intent(MainActivity.this, SettingActivity.class);
+//                startActivityWithAnim(intent);
                 break;
 //            case R.id.btn_show:
 //                //启动悬浮pet

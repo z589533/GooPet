@@ -2,8 +2,10 @@ package com.rdc.goospet.base;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -29,7 +31,16 @@ public abstract class BaseActivity<V, P extends BasePresenter<V>> extends AppCom
         mPresenter = createPresenter();
         mPresenter.attachView((V) this);
         initAttributes();
-        initView();
+
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (!Settings.canDrawOverlays(getApplicationContext())) {
+                //启动Activity让用户授权
+                Intent intent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION);
+                intent.setData(Uri.parse("package:" + getPackageName()));
+                startActivityForResult(intent, 100);
+            }
+        }
     }
 
     //获取Presenter;
